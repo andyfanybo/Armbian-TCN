@@ -126,6 +126,18 @@ jobs:
       VERSION: ${{ steps.get_version.outputs.VERSION }}
 
     steps:
+      - name: Cache build dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            /var/cache/apt
+            /var/lib/apt/lists
+            ~/.ccache
+            build/cache
+          key: ${{ runner.os }}-armbian-cache-${{ hashFiles('**/custom/**/*') }}
+          restore-keys: |
+            ${{ runner.os }}-armbian-cache-
+    
       - name: "Log effective parameters"
         run: |
           echo "--- Build Parameters ---"
