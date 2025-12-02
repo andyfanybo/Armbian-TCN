@@ -7,7 +7,7 @@ name: "Armbian Build Stable"
 # ====================================================================
 on:
   schedule:
-    - cron: '30 2 * * 5'
+    - cron: '0 0 1 * *'
     
   workflow_dispatch:
     inputs:
@@ -17,7 +17,7 @@ on:
         description: 'Board'
         options:
         - lemonpi
-        - som3588-cat
+        - boca-tcn200
         - ufi001c
         - uz801
         - all
